@@ -1,0 +1,5 @@
+== Reporte de entregas ==
+(7, 4) dirección Oriente
+Error en la entrega: Maximum coverage reached: E
+Error en la entrega: Maximum coverage reached: E
+(3, 1) dirección Norte
