@@ -18,11 +18,14 @@ class Util
     public static function getInputFiles()
     {
         $drones = [];
+        $totalReadedFiles = 0;
+        $config = include(__DIR__ . '/../config/default.php');
 
         if ($handle = opendir(static::INPUT_FILES_PATH)) {
-            while (false !== ($fileName = readdir($handle))) {
+            while (false !== ($fileName = readdir($handle)) && $totalReadedFiles < $config['max_drones']) {
                 if ($fileName != "." && $fileName != "..") {
                     $drones[$fileName] = file(static::INPUT_FILES_PATH . "/" . $fileName, FILE_IGNORE_NEW_LINES);
+                    $totalReadedFiles++;
                 }
             }        
             closedir($handle);
@@ -37,6 +40,15 @@ class Util
     public static function saveResults($fileName, $results)
     {
         file_put_contents(static::OUTPUT_FILES_PATH . '/' . $fileName, implode(PHP_EOL, $results));
+    }
+
+    /**
+     * Generates the output filename
+     * @return String
+     */
+    public static function outputFilename($fileName)
+    {
+        return str_replace('in', 'out', $fileName);
     }
 }
 
