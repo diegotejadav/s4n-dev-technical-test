@@ -1,0 +1,12 @@
+{
+    "name": "diegotejadav/s4n-dev-technical-test",
+    "description": "S4N Dev Technical Test",
+    "autoload": {
+        "classmap": [
+            "app/models/"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
